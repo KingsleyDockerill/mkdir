@@ -7,32 +7,41 @@
 #include <string.h>
 #include <fcntl.h>
 
-void grep(char *argv[])
-{
-    int fd,r,j=0;
-    char temp,line[100];
-    if((fd=open(argv[2],O_RDONLY)) != -1)
-    {
-        while((r=read(fd,&temp,sizeof(char)))!= 0)
-        {
-            if(temp!='\n')
-            {
-                line[j]=temp;
-                j++;
-            }
-            else
-            {
-                if(strstr(line,argv[1])!=NULL)
-                    printf("%s\n",line);
-                memset(line,0,sizeof(line));
-                j=0;
-            }
+/* #include <sys/types.h>
+#include <regex.h>
+#include <stdio.h>
 
+int main(int argc, char *argv[]){
+        regex_t regex;
+        int reti;
+        char msgbuf[100];
+
+/ Compile regular expression /
+        reti = regcomp(&regex, "^a[[:alnum:]]", 0);
+        if( reti ){ fprintf(stderr, "Could not compile regex\n"); exit(1); }
+
+/ Execute regular expression /
+        reti = regexec(&regex, "abc", 0, NULL, 0);
+        if( !reti ){
+                puts("Match");
         }
-    }   
-}
+        else if( reti == REG_NOMATCH ){
+                puts("No match");
+        }
+        else{
+                regerror(reti, &regex, msgbuf, sizeof(msgbuf));
+                fprintf(stderr, "Regex match failed: %s\n", msgbuf);
+                exit(1);
+        }
 
-int main()
+/ Free compiled regular expression if you want to use the regex_t again /
+	regfree(&regex);
+
+        return 0;
+}
+ */
+
+int main(int argc, char* argv[])
 {
     puts("Making directory and file...");
     FILE* test;
