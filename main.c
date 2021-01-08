@@ -7,6 +7,26 @@
 #include <string.h>
 #include <fcntl.h>
 
+/* #include <stdio.h>
+#include <stdlib.h>
+#include <dirent.h>
+
+int main() {
+    struct dirent **namelist;
+    int n;
+    n = scandir(".", &namelist, NULL, alphasort);
+    if(n < 0) {
+        perror("scandir");
+    }
+    else {
+        while(n--) {
+            printf("%s\n", namelist[n]->d_name);
+            free(namelist[n]);
+        }
+        free(namelist);
+    }
+} */
+
 /* #include <sys/types.h>
 #include <regex.h>
 #include <stdio.h>
